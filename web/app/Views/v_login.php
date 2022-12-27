@@ -59,7 +59,7 @@
                 <div class="social-auth-links text-center mb-3">
 
                     <p class="mb-0">
-                        <a href="home" class="text-center">Register a new membership</a>
+                        <a href="<?= base_url() ?>" class="text-center">Register a new membership</a>
                     </p>
                 </div>
                 <!-- /.login-card-body -->

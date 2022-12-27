@@ -32,7 +32,7 @@
 
                 <form action="<?= base_url() ?>/warga/insertData" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="nik" placeholder="NIK">
+                        <input type="text" class="form-control" name="nik" placeholder="NIK" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-card"></span>
@@ -42,7 +42,7 @@
 
 
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" required name="password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap">
+                        <input type="text" class="form-control" required name="nama" placeholder="Nama Lengkap">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="no_hp" placeholder="No HP">
+                        <input type="text" class="form-control" required name="no_hp" placeholder="No HP">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="alamat" placeholder="Alamat">
+                        <input type="text" class="form-control" required name="alamat" placeholder="Alamat">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="rt" placeholder="RT">
+                        <input type="text" class="form-control" required name="rt" placeholder="RT">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="rw" placeholder="RW">
+                        <input type="text" class="form-control" required name="rw" placeholder="RW">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="desakel" placeholder="Desa/Kelurahan">
+                        <input type="text" class="form-control" required name="desakel" placeholder="Desa/Kelurahan">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="kec" placeholder="Kecamatan">
+                        <input type="text" class="form-control" required name="kec" placeholder="Kecamatan">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="kab" placeholder="Kabupaten/Kota">
+                        <input type="text" class="form-control" required name="kab" placeholder="Kabupaten/Kota">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="provinsi" placeholder="Provinsi">
+                        <input type="text" class="form-control" required name="provinsi" placeholder="Provinsi">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <select name="jabatan" class="form-control">
+                        <select name="jabatan" class="form-control" required>
                             <option value="warga">warga</option>
                             <option value="rt">Ketua RT</option>
                             <option value="rw">Ketua RW</option>

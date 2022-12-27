@@ -32,6 +32,7 @@ class Warga extends BaseController
             'provinsi' => $this->request->getPost('provinsi'),
             'jabatan' => $this->request->getPost('jabatan'),
         ];
+
         $this->ModelWarga->insertData($data);
 
         //session()->setFlashdata('pesan', 'Data Berhasil Di Tambahkan');

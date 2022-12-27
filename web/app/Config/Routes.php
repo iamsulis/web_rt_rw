@@ -36,6 +36,29 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/login', 'Login::index');
+$routes->get('/layananwarga', 'Layananwarga::index');
+$routes->get('/login/logout', 'Login::logout');
+
+$routes->get('/admin', 'Admin::index');
+
+$routes->get('/layanan', 'Layanan::index');
+$routes->post('/layanan/insertData', 'Layanan::insertData');
+$routes->post('/layanan/updateData/(:any)', 'Layanan::updateData/$1');
+$routes->get('/layanan/deleteData/(:any)', 'Layanan::deleteData/$1');
+
+$routes->get('/warga', 'Warga::index');
+$routes->post('/warga/insertData', 'Warga::insertData');
+$routes->post('/warga/updateData/(:any)', 'Warga::updateData/$1');
+$routes->get('/warga/deleteData/(:any)', 'Warga::deleteData/$1');
+
+$routes->get('/layananwarga', 'Layananwarga::index');
+$routes->post('/layananwarga/insertData', 'Layananwarga::insertData');
+$routes->post('/layananwarga/updateData/(:any)', 'Layananwarga::updateData/$1');
+$routes->get('/layananwarga/deleteData/(:any)', 'Layananwarga::deleteData/$1');
+
+$routes->post('/login/ceklogin', 'Login::cekLogin');
+$routes->post('/warga/insertData', 'Warga::insertData');
 
 /*
  * --------------------------------------------------------------------

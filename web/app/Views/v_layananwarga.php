@@ -200,7 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
 
                     <?php echo form_open('layananwarga/insertData'); ?>
-                    <input type="hidden" name="nik" class="form-control" value="<?= $nik ?>" required>
+                    <input type="hidden" name="nik" class="form-control" value="<?= session()->get('nik')  ?>" required>
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="">Nama layanan</label>
