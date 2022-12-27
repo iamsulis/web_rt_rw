@@ -53,8 +53,6 @@ class Layananwarga extends BaseController
             ];
         }
 
-
-
         return view('v_layananwarga', $data);
     }
     public function insertData()

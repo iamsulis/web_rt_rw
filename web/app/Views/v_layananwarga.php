@@ -236,7 +236,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.modal Virifikasi RT -->
         <!-- /.modal Edit verifikasi layanan -->
         <?php foreach ($layananWrg as $key => $vl) { ?>
-            <div class="modal fade" id="modal-verifikasi<?= $vl['id'] ?>"">
+            <div class="modal fade" id="modal-verifikasi<?= $vl['id'] ?>">
             <div class=" modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -247,7 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
 
                     <?php
-
+                    
                     echo form_open('layananwarga/verifikasi' . session()->get('jabatan') . '/' . $vl['id']); ?>
 
                     <div class="modal-body">
