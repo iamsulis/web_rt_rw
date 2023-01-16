@@ -14,8 +14,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="<?= base_url() ?>/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url() ?>/AdminLTE/dist/css/adminlte.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url() ?>/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -86,7 +90,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark"> Layanan <?= strtoupper(session()->get('jabatan')) ?></h1>
+                            <h1 class="m-0 text-dark">Layanan <?= strtoupper(session()->get('jabatan')) ?></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -111,11 +115,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </h3>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= $judul ?></h5>
 
-                                    <p class="card-text">
-                                        Ini Halaman <?= $judul ?>
-                                    </p>
+                                    <table id="example1" class="table table-bordered table-hover">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th width="5%">NO</th>
+                                                <th>Nama</th>
+                                                <th>No HP</th>
+                                                <th>Alamat</th>
+                                                <th>RT</th>
+                                                <th>RW</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($warga as $key => $value) { ?>
+                                                <tr>
+                                                    <td><?= $no++ ?></td>
+                                                    <td><?= $value['nama'] ?></td>
+                                                    <td><?= $value['no_hp'] ?></td>
+                                                    <td><?= $value['alamat'] ?></td>
+                                                    <td><?= $value['rt'] ?></td>
+                                                    <td><?= $value['rw'] ?></td>
+                                                </tr>
+                                            <?php }
+                                            ?>
+                                        </tbody>
+                                    </table>
 
 
                                 </div>
@@ -133,36 +161,165 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <!-- /.content-wrapper -->
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
+        <!-- /.modal Add Data layanan -->
+        <div class="modal fade" id="modal-add-layanan">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Input Data <?= $judul ?></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Anything you want
+                    <?php echo form_open('layanan/insertData'); ?>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Nama layanan</label>
+                            <input name="nama_layanan" class="form-control" placeholder="layanan" required>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary btn-flat">Save </button>
+                    </div>
+                    <?php echo form_close(); ?>
+                </div>
+
+                <!-- /.modal-content -->
             </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-        </footer>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.End modal Add Data layanan -->
+
+        <!-- /.modal Edit Data layanan -->
+        <?php foreach ($warga as $key => $vl) { ?>
+            <div class="modal fade" id="modal-edit-layanan<?= $vl['id_layanan'] ?>"">
+            <div class=" modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Input Data <?= $judul ?></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <?php echo form_open('layanan/updateData/' . $vl['id_layanan']); ?>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Nama layanan</label>
+                            <input name="nama_layanan" class="form-control" value="<?= $vl['nama_layanan'] ?>" placeholder="layanan" required>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary btn-flat">Save </button>
+                    </div>
+                    <?php echo form_close(); ?>
+                </div>
+
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
     </div>
-    <!-- ./wrapper -->
+<?php } ?>
+<!-- /.End modal Edit Data layanan -->
 
-    <!-- REQUIRED SCRIPTS -->
+<!-- /.modal Hapus Data layanan -->
+<?php foreach ($warga as $key => $vld) { ?>
+    <div class="modal fade" id="modal-hapus-layanan<?= $vld['id_layanan'] ?>"">
+            <div class=" modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Hapus Data <?= $judul ?></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-    <!-- jQuery -->
-    <script src="<?= base_url() ?>/AdminLTE/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?= base_url() ?>/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?= base_url() ?>/AdminLTE/dist/js/adminlte.min.js"></script>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="">Apa anda Yakin Untuk menghapus data berikut ?</label>
+                    <p> Nama layanan = <?= $vl['nama_layanan'] ?> </p>
+
+                </div>
+            </div>
+
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+                <a href="<?= base_url(
+                                'layanan/deleteData/' . $vld['id_layanan']
+                            ) ?>" class="btn btn-danger btn-flat">Hapus </a>
+            </div>
+
+        </div>
+
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    </div>
+<?php } ?>
+<!-- /.End modal hapus Data layanan -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+        <h5>Title</h5>
+        <p>Sidebar content</p>
+    </div>
+</aside>
+<!-- /.control-sidebar -->
+
+<!-- Main Footer -->
+<footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+        Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+</footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="<?= base_url() ?>/AdminLTE/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?= base_url() ?>/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?= base_url() ?>/AdminLTE/dist/js/adminlte.min.js"></script>
+<!-- DataTables -->
+<script src="<?= base_url() ?>/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url() ?>/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?= base_url() ?>/AdminLTE/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+    $(function() {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -13,7 +13,15 @@ class Warga extends BaseController
     }
     public function index()
     {
-        $data['judul'] = "Data Warga";
+
+        $rt = session()->get('rt');
+        $rw = session()->get('rw');
+
+        $data = [
+            'judul' => 'Warga',
+            'warga' => $this->ModelWarga->data_warga($rt, $rw),
+        ];
+
         return view('v_warga', $data);
     }
     public function insertData()

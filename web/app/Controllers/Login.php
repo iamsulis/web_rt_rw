@@ -48,6 +48,7 @@ class Login extends BaseController
                 session()->set('jabatan', $cek_login['jabatan']);
                 session()->set('rt', $cek_login['rt']);
                 session()->set('rw', $cek_login['rw']);
+                session()->set('alamat', $cek_login['alamat']);
                 session()->set('desakel', $cek_login['desakel']);
                 session()->set('kec', $cek_login['kec']);
                 session()->set('kab', $cek_login['kab']);

@@ -59,4 +59,12 @@ class ModelLayananWarga extends Model
             ->where('id', $data['id'])
             ->update($data);
     }
+    public function data_layanan_warga_by_id($id)
+    {
+        return $this->db
+            ->table('tbl_layanan')
+            ->where('id', $id)
+            ->get()
+            ->getResultArray();
+    }
 }

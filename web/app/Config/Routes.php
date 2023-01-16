@@ -59,6 +59,8 @@ $routes->get('/layananwarga/deleteData/(:any)', 'Layananwarga::deleteData/$1');
 $routes->post('/layananwarga/verifikasirw/(:any)', 'Layananwarga::verifikasirw/$1');
 $routes->post('/layananwarga/verifikasirt/(:any)', 'Layananwarga::verifikasirt/$1');
 
+$routes->get('/pdf/(:any)', 'PdfController::generate/$1');
+
 $routes->post('/login/ceklogin', 'Login::cekLogin');
 $routes->post('/warga/insertData', 'Warga::insertData');
 

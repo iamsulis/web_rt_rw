@@ -275,7 +275,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- /.End modal Edit Data layanan -->
 <!-- /.modal Print -->
 <?php foreach ($layananWrg as $key => $vl) { ?>
-    <div class="modal fade" id="modal-print<?= $vl['id'] ?>"">
+    <div class="modal fade" id="modal-print<?= $vl['id'] ?>">
             <div class=" modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -302,14 +302,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <table>
+                    <table class="table table-borderless">
                         <tr>
                             <td colspan="3">Yang Bertanda tangan dibawah ini Ketua RT <?= session()->get('rt') ?> RW <?= session()->get('rt') ?> Desa/Kel. <?= ucwords(session()->get('desakel')) ?> Kecamatan. <?= ucwords(session()->get('kec')) ?> Kab/Kota <?= ucwords(session()->get('kab')) ?> Dengan ini menerangkan bahwa:</td>
                         </tr>
                         <tr>
-                            <td>Nama</td>
+                            <td width="20%">Nama</td>
                             <td>:</td>
-                            <td><?= ucwords(session()->get('nama')) ?></td>
+                            <td width="80%"><?= ucwords(session()->get('nama')) ?></td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
@@ -356,7 +356,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary btn-flat">PRINT </button>
+                <a href="<?= base_url('pdf/'.$vl['id']) ?>" class="btn btn-primary btn-flat">Print</a>
             </div>
 
         </div>

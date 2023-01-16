@@ -22,4 +22,15 @@ class ModelWarga extends Model
             ->get()
             ->getRowArray();
     }
+
+    public function data_warga($rt, $rw)
+    {
+        return $this->db
+            ->table('tbl_warga')
+            ->where('rt', $rt)
+            ->where('rw', $rw)
+            ->where('jabatan', 'warga')
+            ->get()
+            ->getResultArray();
+    }
 }
